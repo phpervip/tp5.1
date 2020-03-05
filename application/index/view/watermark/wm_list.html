@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>批量制作水印 | 图片处理</title>
+
+    <link href="__INSPINIA__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/font-awesome.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/animate.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    {include file="public/navbar-static-side"}
+    <div id="page-wrapper" class="gray-bg">
+        {include file="public/navbar-static-top"}
+        {include file="public/page-heading"}
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>自定义响应表 </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#">Config option 1</a>
+                                    </li>
+                                    <li><a href="#">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>编号 </th>
+                                        <th>名称 </th>
+                                        <th>讲演者</th>
+                                        <th>讲演时间</th>
+                                        <th>讲演时间_中文</th>
+                                        <th>讲演地点</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="list" id="vo"}
+                                    <tr>
+                                        <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
+                                        <td>{$vo.num}</td>
+                                        <td>{$vo.title}</td>
+                                        <td>{$vo.author}</td>
+                                        <td>{$vo.speech_date}</td>
+                                        <td>{$vo.speech_date_cn|default="一九八四年十二月"}</td>
+                                        <td>{$vo.adress}</td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                                共{$list->total()}条
+                            </div>
+                           {$list->render()|raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/page-footer"}
+    </div>
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="__INSPINIA__/js/jquery-3.1.1.min.js"></script>
+<script src="__INSPINIA__/js/bootstrap.min.js"></script>
+<script src="__INSPINIA__/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__INSPINIA__/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Peity -->
+<script src="__INSPINIA__/js/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="__INSPINIA__/js/inspinia.js"></script>
+<script src="__INSPINIA__/js/plugins/pace/pace.min.js"></script>
+
+<!-- iCheck -->
+<script src="__INSPINIA__/js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Peity -->
+<script src="__INSPINIA__/js/demo/peity-demo.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    {include file="public/head"}
+
+    <style>
+        .img-view{
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    {include file="public/navbar-static-side"}
+    <div id="page-wrapper" class="gray-bg">
+        {include file="public/navbar-static-top"}
+        {include file="public/page-heading"}
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>自定义响应表 </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#">Config option 1</a>
+                                    </li>
+                                    <li><a href="#">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <div class="ibox-content">
+                        <form method="post" class="form-horizontal" action="{:url('tpl_edit')}">
+                            <div class="form-group"><label class="col-sm-2 control-label">讲演集名称new</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="{$info.title_new}" name="title_new" required/>
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">讲演作者</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="{$info.author}"/>
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">讲演时间中文</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="{$info.speech_date_start_cn}"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input class="hidden" value="{$info.id}"  name="id">
+                                    <button class="btn btn-white btn-return" onclick="javascript:history.back(-1);return false;">返回</button>
+                                    <button class="ladda-button ladda-button-demo btn btn-primary"  data-style="zoom-in" id="submit">保存</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            {include file="public/page-footer"}
+        </div>
+    </div>
+
+    {include file="public/script"}
+
+    <!-- Peity -->
+    <script src="__INSPINIA__/js/plugins/peity/jquery.peity.min.js"></script>
+    <!-- iCheck -->
+    <script src="__INSPINIA__/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Peity -->
+    <script src="__INSPINIA__/js/demo/peity-demo.js"></script>
+
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+</body>
+
+</html>

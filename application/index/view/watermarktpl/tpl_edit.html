@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>批量制作水印 | 图片处理</title>
+
+    <link href="__INSPINIA__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/font-awesome.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/animate.css" rel="stylesheet">
+    <link href="__INSPINIA__/css/style.css" rel="stylesheet">
+    <style>
+        .img-view{
+            height:300px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    {include file="public/navbar-static-side"}
+
+    <div id="page-wrapper" class="gray-bg">
+        {include file="public/navbar-static-top"}
+        {include file="public/page-heading"}
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>All form elements <small>With custom checbox and radion elements.</small></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#">Config option 1</a>
+                                    </li>
+                                    <li><a href="#">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form method="post" class="form-horizontal" action="{:url('tpl_edit')}">
+                                <div class="form-group"><label class="col-sm-2 control-label">讲演集编号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="01-003" name="lecture_num" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">背景图尺寸</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="{$info.bg_img_size}"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">水印类型 </label>
+                                    <div class="col-sm-2">
+                                        <label class="checkbox-inline">
+                                            <input type="radio"  value="1" id="type1" name="type" {if condition="$info.type eq '1'"}checked="checked"{/if} /> 文字
+                                        </label>
+                                        <label class="checkbox-inline hidden">
+                                            <input type="radio" value="2" id="type2" name="type"  {if condition="$info.type eq '2'"}checked="checked"{/if} /> 图片
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">排字方向 </label>
+                                    <div class="col-sm-2">
+                                        <label class="checkbox-inline">
+                                            <input type="radio" value="1" id="vah2" name="vah" {if condition="$info.vah eq '1'"}checked="checked"{/if}/> 垂直
+                                        </label>
+                                        <label class="checkbox-inline hidden">
+                                            <input type="radio" value="2" id="vah1" name="vah"  {if condition="$info.vah eq '2'"}checked="checked"{/if}/> 水平
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">列数</label>
+                                    <div class="col-sm-4"><input type="text" class="form-control" value="{$info.cols}"  name="cols"><div class="help-block">4列或5列，5列的标题以,拆开。</div></div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">每列位置</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="{$info.pointxy}" name="pointxy">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">字体大小</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" value="{$info.font_size}" name="font_size">
+                                        </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">字体文件</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="{$info.font_ttf}"  name="font_ttf">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">字体颜色</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control demo1" value="{$info.font_color}" name="font_color"/>
+                                        <span class="help-block m-b-none">颜色统一</span>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">模板预览</label>
+                                    <div class="img-preview"><img class="img-view" src="{$info.img_view_url}"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <input class="hidden" value="{$info.tpl_id}"  name="tpl_id">
+                                        <button class="btn btn-white btn-return" onclick="javascript:history.back(-1);return false;">返回</button>
+                                        <button class="ladda-button ladda-button-demo btn btn-primary"  data-style="zoom-in" id="submit">保存</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/page-footer"}
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="__INSPINIA__/js/jquery-3.1.1.min.js"></script>
+<script src="__INSPINIA__/js/bootstrap.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="__INSPINIA__/js/inspinia.js"></script>
+<script src="__INSPINIA__/js/plugins/pace/pace.min.js"></script>
+
+<!--&lt;!&ndash; iCheck &ndash;&gt;-->
+<script src="__INSPINIA__/js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Color picker -->
+<script src="__INSPINIA__/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+
+<!-- layer彈出層 -->
+<script src="__LAYER__/layer.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        $('.demo1').colorpicker();
+    });
+
+    // 验证就参考这种写法。
+    $("form").submit(function () {
+        var self = $(this);
+        $.post(self.attr('action'), self.serialize(), success, 'json');
+        return false;
+        function success(data) {
+            if (data.code) {
+                layer.msg(data.msg);
+                window.location.href = data.url;
+            } else {
+                layer.msg(data.msg);
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>
