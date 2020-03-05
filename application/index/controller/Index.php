@@ -6,6 +6,9 @@ use app\common\model\Watermark as mWatermark;
 
 class Index extends Controller
 {
+    public function index(){
+        echo '这是首页';
+    }
 
     public function reduction($sql='select ? from ',$val='a'){
             $i=0;
@@ -31,7 +34,7 @@ class Index extends Controller
 
 
 
-    public function index()
+    public function index_old()
     {
         $pageParam  = ['query'=>[]];
         $mWatermark = new mWatermark();
