@@ -4,8 +4,8 @@ use think\Controller;
 class Urlhandle extends Controller
 {
 
-	// http://tp5.ccc/admin/urlhandle/view_qrcode?url=http://www.baidu.com&size=1000
-	public function view_qrcode($url='http://www.baidu.com',$size='',$name=''){
+	// http://tp5.ccc/admin/urlhandle/qrcode?url=http://www.baidu.com&size=1000
+	public function qrcode($url='http://www.baidu.com',$size='',$name=''){
         $url = input('url');
         if(empty(input('size'))){
             $size = 300;
