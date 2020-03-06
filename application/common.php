@@ -160,7 +160,7 @@ function qrcode($url="http://www.baidu.com",$level='high',$size=150,$label='',$f
     $qrCode = new QrCode();
     $qrCode->setText($url)
         ->setSize($size)  // 大小
-        ->setLabelFontPath(VENDOR_PATH.'endroid/qrcode/assets/noto_sans.otf')
+        ->setLabelFontPath(VENDOR_PATH.'endroid/qr-code/assets/noto_sans.otf')
         ->setErrorCorrectionLevel($level)
         ->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0))
         ->setBackgroundColor(array('r' => 255, 'g' => 255, 'b' => 255, 'a' => 0))

@@ -7,7 +7,8 @@ use app\common\model\Watermark as mWatermark;
 class Index extends Controller
 {
     public function index(){
-        echo '这是首页';
+        echo '这是首页';exit;
+        return $this->fetch();
     }
 
     public function reduction($sql='select ? from ',$val='a'){

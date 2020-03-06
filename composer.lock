@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9356abf1498b5d4346623025b8ad8e71",
+    "content-hash": "a2b4e82f15b50ed4121ac01876b6f075",
     "packages": [
         {
             "name": "ares333/php-curl",
@@ -310,7 +310,7 @@
             "time": "2017-03-13T09:14:27+00:00"
         },
         {
-            "name": "endroid/qrcode",
+            "name": "endroid/qr-code",
             "version": "2.5.1",
             "source": {
                 "type": "git",
@@ -382,7 +382,6 @@
                 "qrcode",
                 "symfony"
             ],
-            "abandoned": "endroid/qr-code",
             "time": "2018-05-09T20:26:30+00:00"
         },
         {

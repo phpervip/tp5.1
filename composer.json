@@ -24,7 +24,7 @@
         "jaeger/querylist-absolute-url": "^4.0",
         "jaeger/querylist-curl-multi": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
-        "endroid/qrcode": "^2.4"
+        "endroid/qr-code": "^2.4"
     },
     "autoload": {
         "psr-4": {
