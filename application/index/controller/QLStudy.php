@@ -15,12 +15,13 @@ use QL\Ext\AbsoluteUrl;
 use QL\Ext\CurlMulti;
 use GuzzleHttp\Exception\RequestException;
 
-class QLStudy extends Controller
+class Qlstudy extends Controller
 {
 
     // 来源页面：http://querylist.cc/
 
     // 看看PHP用QueryList做采集到底有多简洁吧!
+    // tp5.ccc/index/qlstudy/caiji
     public function caiji(){
         //采集某页面所有的图片
         $data = QueryList::get('http://cms.querylist.cc/bizhi/450.html')->find('img')->attrs('src');
@@ -379,6 +380,81 @@ STR;
 
     }
 
+    // 采集列表
+    // tp5.ccc/index/qlstudy/caiji15
+    public function caiji15(){
+        $ql = QueryList::get('https://www.ithome.com/html/discovery/358585.htm');
 
+        $rt = [];
+        // 采集文章标题
+        $rt['title'] = $ql->find('h1')->text();
+        // 采集文章作者
+        $rt['author'] = $ql->find('#author_baidu>strong')->text();
+        // 采集文章内容
+        $rt['content'] = $ql->find('.post_content')->html();
+        var_dump($rt);
+    }
+
+    // 采集列表
+    // tp5.ccc/index/qlstudy/caiji16
+    public function caiji16(){
+        $url = 'https://www.ithome.com/html/discovery/358585.htm';
+        // 定义采集规则
+        $rules = [
+            // 采集文章标题
+            'title' => ['h1','text'],
+            // 采集文章作者
+            'author' => ['#author_baidu>strong','text'],
+            // 采集文章内容
+            'content' => ['.post_content','html']
+        ];
+        // $rt = QueryList::get($url)->rules($rules)->query()->getData();
+        // var_dump($rt->all());
+
+        $rt = QueryList::get($url)->rules($rules)->queryData();
+        var_dump($rt);
+    }
+
+     // 采集列表
+    // tp5.ccc/index/qlstudy/caiji17
+    public function caiji17(){
+        $url = 'http://tp5.1.yyii.info/index/index/urls';
+        // 定义采集规则
+        $rules = [
+            // 采集图片
+            'image' => ['img','src'],
+        ];
+        $rt = QueryList::get($url)->rules($rules)->query()->getData();
+        var_dump($rt->all());
+    }
+
+    //采集并下载ZOL桌面壁纸
+    // tp5.ccc/index/qlstudy/caiji18
+    public function caiji18(){
+        //采集并下载ZOL桌面壁纸
+        $ql = QueryList::getInstance();
+        //扩展一个图片下载功能
+        //参数：$path 为图片本地保存路径
+        $ql->bind('downloadImage',function ($path){
+            $data = $this->getData()->map(function ($item) use($path){
+                //获取图片
+                $img = file_get_contents($item['image']);
+                $localPath = $path.'/'.md5($img).'.jpg';
+                //保存图片到本地路径
+                file_put_contents($localPath,$img);
+                //data数组中新增一个自定义的本地路径字段
+                $item['local_path'] = $localPath;
+                return $item;
+            });
+            //更新data属性
+            $this->setData($data);
+                return $this;
+        });
+
+        $data = $ql->get('http://desk.zol.com.cn')->rules([
+            'image' => ['#newPicList img','src']
+        ])->query()->downloadImage('download/img')->getData();
+        var_dump($data->all());
+    }
 
 }

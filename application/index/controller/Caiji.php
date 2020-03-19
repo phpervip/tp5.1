@@ -48,7 +48,7 @@ class Caiji extends Controller
 
 	}
 
-// tp5.ccc/index/Caiji/index2/
+	// tp5.ccc/index/Caiji/index2/
 	public function index2(){
 		error_reporting(0);
 		 // CURL多线程采集
@@ -92,4 +92,7 @@ class Caiji extends Controller
 		$use_time = $end_time-$start_time;
 		echo $use_time;
 	}
+
+	
+
 }
