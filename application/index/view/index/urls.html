@@ -10,9 +10,14 @@
 			<div>http://tp5.1.yyii.info/json/{$vo}</div>
 		{/volist}
 	</div>
-	<div id="images">
+	<div id="jsonimage">
 		{volist name="nums" id="vo"}
 			<image src="http://tp5.1.yyii.info/json/{$vo}"/>
+		{/volist}
+	</div>
+	<div id="images">
+		{volist name="nums" id="vo"}
+			<image width="30" height="30" src="http://tp5.1.yyii.info/upload/image/{$vo}.jpg"/>
 		{/volist}
 	</div>
 </body>
