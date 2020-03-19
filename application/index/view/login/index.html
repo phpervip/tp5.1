@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <title>扫码登录</title>
+        <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="wxqrcode"></div>
+        
+    </body>
+    <script type="text/javascript">
+        var obj = new WxLogin({
+         self_redirect:false,
+         id:"wxqrcode", 
+         appid: "wx9c45ac1710eb8a3a", 
+         scope: "snsapi_login", 
+         redirect_uri: "index/login/authorization",
+         state: "MD5",//自己存session
+         style: "black",
+         // 加密之后的样式，要改自己解密去
+         href: "data:text/css;base64,LmltcG93ZXJCb3ggLnFyY29kZSB7d2lkdGg6IDIwMHB4O30NCi5pbXBvd2VyQm94IC50aXRsZSB7ZGlzcGxheTogbm9uZTt9DQouaW1wb3dlckJveCAuaW5mbyB7d2lkdGg6IDIwMHB4O30NCi5zdGF0dXNfaWNvbiB7ZGlzcGxheTogbm9uZX0NCi5pbXBvd2VyQm94IC5zdGF0dXMge3RleHQtYWxpZ246IGNlbnRlcjt9"
+         });
+    </script>
+</html>

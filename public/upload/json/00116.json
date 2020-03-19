@@ -1,0 +1,20 @@
+{
+    "txt":{
+        "itemid":"01-003-0020",
+        "voice":"",
+        "subtitle":"phpspider 简单使用",
+        "title":"phpspider 简单使用",
+        "content":" phpspider一款优秀的PHP开发蜘蛛爬虫
+官方下载地址：https://github.com/owner888/phpspider
+官方开发手册：https://doc.phpspider.org/",
+编写PHP网络爬虫, 需要具备以下技能:
+    爬虫采用PHP编写
+    从网页中抽取数据需要用XPath ( XPath选择器教程 )
+    当然我们还可以使用CSS选择器 ( CSS选择器教程 )
+    很多情况下都会用到正则表达式 ( 正则表达式教程 )
+    Chrome的开发者工具是神器, 很多AJAX请求需要用它来分析
+
+注意：本框架只能在命令行下运行，命令行、命令行、命令行，重要的事情说三遍 ^_^
+        "txt":"1"
+    }
+}

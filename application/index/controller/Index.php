@@ -68,10 +68,7 @@ class Index extends Controller
         return $this->fetch();
     }
 
-    public function hello($name = 'ThinkPHP5')
-    {
-        return 'hello,' . $name;
-    }
+
 
     public function watermark()
     {
@@ -145,7 +142,31 @@ class Index extends Controller
        // $info['add_time']=time();
        // M('erweima')->add($info);
        //  return true;
+    }
 
+
+    public function hello($name = 'ThinkPHP5')
+    {
+        return 'hello,' . $name;
+    }
+
+    // tp5.ccc/index/json/?num=01-003-0001(因为中划线，会导致找不到。）)
+    // tp5.ccc/json/00001
+    public function json($num=''){
+        $file_path = 'upload/json/'.$num.".json";
+        // var_dump(ROOT_PATH.$file_path);
+        if(file_exists($file_path)){
+            $str = file_get_contents($file_path); //将整个文件内容读入到一个字符串中
+            return $str;
+        }else{
+            return '';
+        }
+    }
+
+    // tp5.ccc/image/00001
+     public function image($num=''){
+        $file_path = '/upload/image/'.$num.".jpg";
+        return request()->domain().$file_path;
     }
 
 }
