@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use think\Controller;
 use app\common\model\Watermark as mWatermark;
+use think\Db;
 
 class Index extends Controller
 {
@@ -164,9 +165,16 @@ class Index extends Controller
     }
 
     // tp5.ccc/image/00001
-     public function image($num=''){
+    public function image($num=''){
         $file_path = '/upload/image/'.$num.".jpg";
         return request()->domain().$file_path;
+    }
+
+    // tp5.ccc/index/index/urls
+    public function urls(){
+         $nums = Db::name('num')->column('num');
+         $this->assign('nums',$nums);
+         return $this->fetch();
     }
 
 }
