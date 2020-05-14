@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<definitions name="soap" targetNamespace="urn:soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="soapPort"><operation name="_initialize">
+<input message="tns:_initializeRequest" />
+<output message="tns:_initializeResponse" />
+</operation>
+<operation name="index">
+<input message="tns:indexRequest" />
+<output message="tns:indexResponse" />
+</operation>
+<operation name="payRequest">
+<input message="tns:payRequestRequest" />
+<output message="tns:payRequestResponse" />
+</operation>
+<operation name="returnInfo">
+<input message="tns:returnInfoRequest" />
+<output message="tns:returnInfoResponse" />
+</operation>
+<operation name="creatWsdl">
+<input message="tns:creatWsdlRequest" />
+<output message="tns:creatWsdlResponse" />
+</operation>
+<operation name="registerMiddleware">
+<input message="tns:registerMiddlewareRequest" />
+<output message="tns:registerMiddlewareResponse" />
+</operation>
+<operation name="__debugInfo">
+<input message="tns:__debugInfoRequest" />
+<output message="tns:__debugInfoResponse" />
+</operation>
+</portType>
+<binding name="soapBinding" type="tns:soapPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="_initialize">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#_initialize" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="index">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#index" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="payRequest">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#payRequest" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="returnInfo">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#returnInfo" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="creatWsdl">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#creatWsdl" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="registerMiddleware">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#registerMiddleware" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="__debugInfo">
+<soap:operation soapAction="urn:soap#app\index\controller\Pay#__debugInfo" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="soap">
+<documentation />
+<port name="soapPort" binding="tns:soapBinding"><soap:address location="http://tp5.ccc:80/index.php/index/Pay/creatWsdl" />
+</port>
+</service>
+<message name="_initializeRequest">
+</message>
+<message name="_initializeResponse">
+<part name="_initialize" type="xsd:string" />
+</message>
+<message name="indexRequest">
+</message>
+<message name="indexResponse">
+<part name="index" type="xsd:string" />
+</message>
+<message name="payRequestRequest">
+<part name="params" type="xsd:string" />
+</message>
+<message name="payRequestResponse">
+<part name="payRequest" type="xsd:string" />
+</message>
+<message name="returnInfoRequest">
+</message>
+<message name="returnInfoResponse">
+<part name="returnInfo" type="xsd:string" />
+</message>
+<message name="creatWsdlRequest">
+</message>
+<message name="creatWsdlResponse">
+<part name="creatWsdl" type="xsd:string" />
+</message>
+<message name="registerMiddlewareRequest">
+</message>
+<message name="registerMiddlewareResponse">
+<part name="registerMiddleware" type="xsd:string" />
+</message>
+<message name="__debugInfoRequest">
+</message>
+<message name="__debugInfoResponse">
+<part name="__debugInfo" type="xsd:string" />
+</message>
+</definitions>

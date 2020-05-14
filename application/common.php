@@ -239,12 +239,40 @@ function download($url, $path = 'images/')
     }
 
 
-    function dump($arr)
+function dump($arr)
+{
+        echo '<pre>';
+        var_dump($arr);
+        echo '</pre>';
+}
+
+
+// 学习wsdl
+// 服务端
+function WebService($uri,$class_name='',$namespace='controller',$persistence = false){
+    $class = 'index\\'. $namespace .'\\'. $class_name;
+    $class = 'app\index\controller\Web';
+    $serv = new \SoapServer(null,array("uri"=>$uri));
+    $serv->setClass($class);
+    if($persistence)
+        $serv->setPersistence(SOAP_PERSISTENCE_SESSION);//默认是SOAP_PERSISTENCE_REQUEST
+    $serv->handle();
+    return $serv;
+
+}
+
+// 学习wsdl
+// 客户端
+function WebClient($url='',array $options=array()){
+    if(stripos($url,'?wsdl')!== false)
     {
-            echo '<pre>';
-            var_dump($arr);
-            echo '</pre>';
+        return new \SoapClient($url,array_merge(array('encoding'=>'utf-8'),$options));//WSDL
     }
-
-
-
+    else
+    {
+        $location = "http://tp5.ccc/";
+        $uri = "index/web/index";
+        $options = array_merge(array('location'=>$location,'uri'=>$uri,'encoding'=>'utf-8'),$options);
+        return new \SoapClient(null,$options);//non-WSDL
+    }
+}

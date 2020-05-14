@@ -428,10 +428,11 @@ STR;
         var_dump($rt->all());
     }
 
-    //采集并下载ZOL桌面壁纸
+    // 采集下载保存为 JSON文件
     // tp5.ccc/index/qlstudy/caiji18
     public function caiji18(){
         //采集并下载ZOL桌面壁纸
+        $url = 'http://tp5.1.yyii.info/index/index/urls';
         $ql = QueryList::getInstance();
         //扩展一个图片下载功能
         //参数：$path 为图片本地保存路径
@@ -439,7 +440,10 @@ STR;
             $data = $this->getData()->map(function ($item) use($path){
                 //获取图片
                 $img = file_get_contents($item['image']);
-                $localPath = $path.'/'.md5($img).'.jpg';
+                // $item['image'] 是：http://tp5.1.yyii.info/json/00013
+                //$localPath = $path.'/'.md5($img).'.jpg';
+                $num = substr($item['image'],-5);
+                $localPath = $path.'/'.$num.'.json';
                 //保存图片到本地路径
                 file_put_contents($localPath,$img);
                 //data数组中新增一个自定义的本地路径字段
@@ -450,11 +454,12 @@ STR;
             $this->setData($data);
                 return $this;
         });
-
-        $data = $ql->get('http://desk.zol.com.cn')->rules([
-            'image' => ['#newPicList img','src']
+        // 教程写的是：http://desk.zol.com.cn，返回空。
+        $data = $ql->get($url)->rules([
+            'image' => ['#jsonimage img','src']
         ])->query()->downloadImage('download/img')->getData();
-        var_dump($data->all());
+
+        // var_dump($data->all());
     }
 
 }

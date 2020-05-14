@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<definitions name="liang" targetNamespace="urn:liang" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:liang" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="liangPort"><operation name="sayHello">
+<input message="tns:sayHelloRequest" />
+<output message="tns:sayHelloResponse" />
+</operation>
+<operation name="add">
+<input message="tns:addRequest" />
+<output message="tns:addResponse" />
+</operation>
+</portType>
+<binding name="liangBinding" type="tns:liangPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="sayHello">
+<soap:operation soapAction="urn:liang#testD#sayHello" />
+<input><soap:body use="encoded" namespace="urn:liang" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:liang" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="add">
+<soap:operation soapAction="urn:liang#testD#add" />
+<input><soap:body use="encoded" namespace="urn:liang" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:liang" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="liang">
+<documentation />
+<port name="liangPort" binding="tns:liangBinding"><soap:address location="http://tp5.ccc:80/soap/ts2.php" />
+</port>
+</service>
+<message name="sayHelloRequest">
+<part name="world" type="xsd:string" />
+</message>
+<message name="sayHelloResponse">
+<part name="sayHello" type="xsd:string" />
+</message>
+<message name="addRequest">
+<part name="a" type="xsd:string" />
+<part name="b" type="xsd:string" />
+</message>
+<message name="addResponse">
+<part name="add" type="xsd:string" />
+</message>
+</definitions>
