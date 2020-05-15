@@ -3,7 +3,7 @@
 // 第五步：执行creat_wsdl.php文件
 // http://tp5.ccc/service/create_wsdl.php
 include("api.php");
-include("../../extend/soap/SoapDiscovery.class.php");
+include("SoapDiscovery.class.php");
 $disc = new SoapDiscovery('api','service');//api类文件名，service接口目录
 $disc->getWSDL();
 ?>
