@@ -7,7 +7,7 @@ if(!file_exists(WSDL_FILE)){
     file_put_contents(WSDL_FILE, $str);
 }
 
-$ss = new SoapServer(WSDL_FILE);
+$ss = new \SoapServer(WSDL_FILE);
 $ss->setClass('testD');
 $ss->handle();
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<definitions name="service" targetNamespace="urn:service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:service" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="servicePort"><operation name="test">
+<input message="tns:testRequest" />
+<output message="tns:testResponse" />
+</operation>
+</portType>
+<binding name="serviceBinding" type="tns:servicePort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="test">
+<soap:operation soapAction="urn:service#api#test" />
+<input><soap:body use="encoded" namespace="urn:service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="service">
+<documentation />
+<port name="servicePort" binding="tns:serviceBinding"><soap:address location="http://tp5.ccc:80/service/create_wsdl.php" />
+</port>
+</service>
+<message name="testRequest">
+</message>
+<message name="testResponse">
+<part name="test" type="xsd:string" />
+</message>
+</definitions>

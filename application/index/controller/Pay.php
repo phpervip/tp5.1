@@ -4,10 +4,14 @@ use think\Controller;
 use app\index\service\Pay as PayService;
 // 学习wsdl
 // 参考教程:http://blog.yuanrb.com/houduan/197/  (下面代码与教程不同，有改过)
+// 参考教程：http://blog.yuanrb.com/houduan/191/
 // 服务端
 // http://tp5.ccc/index/Pay/creatWsdl
 // http://tp5.ccc/index/Pay/index?wsdl
 // 读出来是一个个空白的框
+// 客户端
+// http://tp5.ccc/index/Pay/client
+// 客户端方法里，但是$data是什么呢？？代码运行不了
 
 class Pay extends Controller {
     protected $PayService;
@@ -69,6 +73,27 @@ class Pay extends Controller {
             $disco = new \SoapDiscovery( Pay::class,'soap',$path);
             // 生成wsdl文件
             $disco->getWSDL();
+        }
+    }
+
+
+    public function client(){
+        $soapUrl = 'http://tp5.ccc/index/Pay/index?wsdl';
+        try{
+            $client = new \SoapClient($soapUrl);
+            $result = $client->PayRequest(base64_encode($data));
+            $result = json_decode(base64_decode($result),true);
+            if($result['MSGCODE']!=0){
+                $this->error = $result['MSG'];
+                return false;
+            }
+            return true;
+
+        }catch(SoapFault $e){
+            echo $e->getMessage();
+
+        }catch(Exception $e){
+            echo $e->getMessage();
         }
     }
 }
