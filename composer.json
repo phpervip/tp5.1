@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=5.6.0",
-        "topthink/framework": "5.1.*",
+        "topthink/framework": "6.0.*",
         "topthink/think-image": "^1.0",
         "jkbuildhtml/jkbuildhtml": "^1.1",
         "jaeger/querylist": "^4.1",
